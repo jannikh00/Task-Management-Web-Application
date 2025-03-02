@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task Management App</title>
+</head>
+
+<body>
+
+    <!-- Navigation or header section -->
+    <header>
+        <nav>
+            <a href="{% url 'login' %}">Login</a> |
+            <a href="{% url 'register' %}">Register</a> |
+            <a href="{% url 'profile' %}">Profile</a>
+        </nav>
+    </header>
+
+    <!-- unique content for child templates -->
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2025 Jannik Hofmann. My Task Management App</p>
+    </footer>
+
+</body>
+
+</html>
