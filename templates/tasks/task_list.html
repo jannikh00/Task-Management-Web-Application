@@ -1,0 +1,21 @@
+{% extends 'tasks/base.html' %} {# Inherit layout from base.html #}
+
+{% block content %}
+<h1>Task List</h1> {# Page title #}
+
+<!-- Link to create a new task -->
+<a href="{% url 'task_create' %}">Create New Task</a>
+
+<!-- Display the list of tasks -->
+<ul>
+    {% for task in tasks %}
+    <li>
+        {{ task.title }} - Due: {{ task.due_date }} -
+        <a href="{% url 'task_update' task.pk %}">Edit</a> |
+        <a href="{% url 'task_delete' task.pk %}">Delete</a>
+    </li>
+    {% empty %}
+    <li>No tasks available.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

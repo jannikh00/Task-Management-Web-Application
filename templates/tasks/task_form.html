@@ -1,0 +1,13 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<h1>{% if form.instance.pk %}Edit Task{% else %}Create Task{% endif %}</h1> {# Show different titles for create vs. edit
+#}
+
+<!-- Form for creating or updating a task -->
+<form method="POST">
+    {% csrf_token %} {# Security token to prevent CSRF attacks #}
+    {{ form.as_p }} {# Render form fields as paragraphs #}
+    <button type="submit">Save</button>
+</form>
+{% endblock content %}
