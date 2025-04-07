@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>Task Management App</title>
+    <title>{% block title %} Task Management App{% endblock %}</title>
+    {% block extra_css %}{% endblock %}
 </head>
 
 <body>
@@ -28,6 +29,9 @@
     <footer>
         <p>&copy; 2025 Jannik Hofmann. My Task Management App</p>
     </footer>
+
+    <!-- JavaScript block for child templates -->
+    {% block extra_js %}{% endblock %}
 
 </body>
 

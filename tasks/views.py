@@ -5,6 +5,9 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserRegisterForm, TaskForm
 from .models import Profile, Task
+from django.views.decorators.http import require_GET, require_POST
+from django.http import JsonResponse
+
 
 # User sign-up, creates a user and an empty profile
 def register(request):
@@ -107,3 +110,35 @@ def task_delete(request, pk):
         return redirect('task_list')
     # Render a confirmation template
     return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+
+# View to fetch task updates
+@require_GET  # Allow only GET requests for fetching tasks
+def ajax_task_updates(request):
+    tasks = list(Task.objects.values())  # Retrieve all tasks and convert QuerySet to list
+    return JsonResponse({'tasks': tasks})  # Return tasks as a JSON response
+
+# View to update task status
+@require_POST  # Allow only POST requests for updating tasks
+def ajax_update_task(request):
+    import json  # Import json module to parse JSON data
+    data = json.loads(request.body)  # Parse JSON data from the request body
+    task_id = data.get('id')  # Extract task ID from the data
+    status = data.get('status')  # Extract new status from the data
+    try:
+        task = Task.objects.get(id=task_id)  # Retrieve the task by its ID
+        task.status = status  # Update the task status
+        task.save()  # Save changes to the database
+        # Notify WebSocket clients about the update
+        from asgiref.sync import async_to_sync
+        from channels.layers import get_channel_layer
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            "tasks_group",  # Send to the tasks group
+            {
+                'type': 'task_update',  # Custom event type for task updates
+                'message': {'id': task_id, 'status': status}  # Include update details
+            }
+        )
+        return JsonResponse({'success': True})  # Return success response
+    except Task.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Task not found'}, status=404)  # Return error if task not found

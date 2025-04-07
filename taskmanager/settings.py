@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks' # tasks app
+    'tasks', # tasks app
+    'channels',  # Enable Django Channels for asynchronous handling
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'taskmanager.wsgi.application'
+
+# Set the ASGI application path
+ASGI_APPLICATION = 'taskmanager.asgi.application'
+
+# Configure channel layers
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 
 # Database

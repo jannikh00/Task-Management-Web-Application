@@ -37,4 +37,8 @@ urlpatterns = [
     path('tasks/<int:pk>/update/', views.task_update, name='task_update'),
     # URL pattern for deleting a task; <int:pk> captures the task's primary key
     path('tasks/<int:pk>/delete/', views.task_delete, name='task_delete'),
+    # URL pattern for fetching task updates via AJAX
+    path('ajax/task_updates/', views.ajax_task_updates, name='ajax_task_updates'),
+    # URL pattern for updating a task via AJAX
+    path('ajax/update_task/', views.ajax_update_task, name='ajax_update_task'),
 ]
