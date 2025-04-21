@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block content %}
-<h1>Your Profile</h1>
-<p>Welcome, {{ user.username }}!</p>
-<p><a href="{% url 'logout' %}">Logout</a></p>
+<div class="profile-card">
+    <h1>Your Profile</h1>
+    <p>Welcome, {{ user.username }}!</p>
+    <p><a href="{% url 'logout' %}" class="btn">Logout</a></p>
+</div>
 {% endblock content %}

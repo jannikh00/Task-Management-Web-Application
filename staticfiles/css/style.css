@@ -1,0 +1,331 @@
+/* ===================================
+   GLOBAL LAYOUT & TYPOGRAPHY
+=================================== */
+
+/* Set base font, background and text color */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Center page content and set max width */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* ===================================
+     HEADER & NAVIGATION BAR
+  =================================== */
+
+/* Style the full header bar */
+header {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+/* Arrange navigation links in a horizontal row */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 16px 0;
+}
+
+/* Style each link in the navbar */
+.navbar a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Hover effect for navbar links */
+.navbar a:hover {
+    color: #a5b4fc;
+}
+
+/* Center header contents horizontally and vertically */
+header .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ===================================
+     FOOTER
+  =================================== */
+
+/* Style the footer section */
+footer {
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+    padding: 16px 0;
+    font-size: 0.9rem;
+    background-color: #fdfdfd;
+    color: #666;
+}
+
+/* Center footer contents */
+footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center footer text inside the container */
+footer p {
+    text-align: center;
+    width: 100%;
+}
+
+
+/* ===================================
+     BUTTON STYLES
+  =================================== */
+
+/* General button styling */
+.btn {
+    display: inline-block;
+    background-color: #4285f4;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 6px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover effect for general buttons */
+.btn:hover {
+    background-color: #2c6ad6;
+}
+
+/* Style for delete buttons */
+.btn.delete {
+    background-color: #d9534f;
+}
+
+/* Hover effect for delete buttons */
+.btn.delete:hover {
+    background-color: #c9302c;
+}
+
+/* Confirm delete (destructive action) */
+.btn-delete {
+    background-color: #dc3545;
+}
+
+/* Hover for confirm delete */
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Cancel button (neutral action) */
+.btn-cancel {
+    background-color: #6c757d;
+}
+
+/* Hover for cancel button */
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
+
+/* ===================================
+     FORMS & FORM CONTAINERS
+  =================================== */
+
+/* Outer wrapper for all forms */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Center form titles */
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Layout for form label + input pairs */
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for form labels */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #1e3a8a;
+}
+
+/* Common input styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix alignment for checkboxes */
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 8px;
+}
+
+/* Style for individual error messages */
+.form-errors,
+.form-errors p {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+/* Help text under form fields */
+.form-help {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* Style for links under forms */
+.form-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+/* Register/Login switch link */
+.form-note .link {
+    color: #1e3a8a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Hover effect for form note links */
+.form-note .link:hover {
+    text-decoration: underline;
+}
+
+/* Button inside form spacing */
+button.btn {
+    margin-top: 12px;
+}
+
+
+/* ===================================
+     PROFILE CARD
+  =================================== */
+
+/* Profile card wrapper */
+.profile-card {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* Profile card title */
+.profile-card h1 {
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+    color: #1e3a8a;
+}
+
+/* Profile description text */
+.profile-card p {
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+
+/* ===================================
+     TASK LIST & TASK CARDS
+  =================================== */
+
+/* Header row for task list page */
+.task-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* Card container for each task */
+.task-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 16px 0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: background-color 0.2s ease;
+}
+
+/* Hover effect for task card */
+.task-card:hover {
+    background-color: #f7faff;
+}
+
+/* Task title styling */
+.task-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+/* Due date styling */
+.due {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Button container inside task cards */
+.actions {
+    margin-top: 10px;
+}
+
+
+/* ===================================
+     DELETE CONFIRMATION
+  =================================== */
+
+/* Container for delete task confirmation */
+.delete-confirmation {
+    text-align: center;
+    padding: 32px;
+}
+
+/* Button group for delete confirmation */
+.delete-form {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}

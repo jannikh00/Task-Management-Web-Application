@@ -1,12 +1,25 @@
 {% extends 'tasks/base.html' %}
-{% load static %}
 
 {% block content %}
-<h1>Login</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
-<p>Need an account? <a href="{% url 'register' %}">Register</a></p>
-{% endblock content %}
+<div class="form-container">
+    <h1>Login</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% for error in field.errors %}
+            <div class="form-errors">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn">Log In</button>
+    </form>
+
+    <p class="form-note">
+        Need an account? <a href="{% url 'register' %}" class="link">Register</a>
+    </p>
+</div>
+{% endblock %}

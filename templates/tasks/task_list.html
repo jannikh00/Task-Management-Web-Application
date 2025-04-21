@@ -1,11 +1,13 @@
 {% extends 'tasks/base.html' %}
 
 {% block content %}
-<!-- Page title -->
-<h1>Task List</h1>
+<div class="task-list-header">
+    <!-- Page title -->
+    <h1>Task List</h1>
 
-<!-- Link to create a new task -->
-<a href="{% url 'task_create' %}">Create New Task</a>
+    <!-- Link to create a new task -->
+    <a href="{% url 'task_create' %}" class="btn">+ Create Task</a>
+</div>
 
 <!-- Dynamic container for AJAX-updated task list -->
 <div id="task-container">Loading tasks...</div>
@@ -15,17 +17,29 @@
 <script>
     // Function to render tasks into the dynamic container
     function renderTasks(tasks) {
-        const taskContainer = document.getElementById('task-container');
+        const taskContainer = document.getElementById('task-container');  // Get the container div
         if (tasks.length === 0) {
-            taskContainer.innerHTML = 'No tasks available.';
+            taskContainer.innerHTML = 'No tasks available.';  // Show fallback message if no tasks exist
             return;
         }
-        let html = '';
+
+        let html = '';  // Initialize empty HTML string
+
+        // Loop through each task and build its HTML card
         tasks.forEach(task => {
-            html += '<div><strong>' + task.title + '</strong> - Due: ' + task.due_date +
-                ' - <a href="/tasks/' + task.id + '/update/">Edit</a> | <a href="/tasks/' + task.id + '/delete/">Delete</a></div>';
+            html += `
+                <div class="task-card">
+                    <h3 class="task-title">${task.title}</h3>
+                    <p class="due">Due: ${task.due_date}</p>
+                    <div class="actions">
+                    <a href="/tasks/${task.id}/update/" class="btn">Edit</a>
+                    <a href="/tasks/${task.id}/delete/" class="btn delete">Delete</a>
+                    </div>
+                </div>
+            `;
         });
-        taskContainer.innerHTML = html;
+
+        taskContainer.innerHTML = html;  // Inject the rendered HTML into the container
     }
 
     // Function to fetch tasks using AJAX

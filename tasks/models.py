@@ -13,7 +13,7 @@ class Profile(models.Model):
     
 class Task(models.Model):
     # Field for the task's title with a maximum length of 200 characters
-    title = models.CharField(max_length=200)       
+    title = models.CharField(max_length=200, blank=False, null=False)       
 
     # Field for a detailed description of the task; can be left empty
     description = models.TextField(blank=True)       
